@@ -1,0 +1,134 @@
+    <h1 align="center">User Registration</h1>
+<% if @user.errors.any? %>
+  <div id="error_explanation" style="color:red">
+    <h2><%= pluralize(@user.errors.count, "error") %></h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for [:admin,@user] do |f| %>
+  <div class="row">
+  <div class="col-md-4">
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name,class:"form-control",:required => true %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <%= f.label :middle_name %>
+    <%= f.text_field :middle_name,class:"form-control" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.label :last_name  %>
+    <%= f.text_field :last_name,class:"form-control",:required => true %>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-md-6">
+    <%= f.label :email %>
+    <%= f.text_field :email,class:"form-control",:required => true %>
+    </div>
+    <div class="col-md-6">
+    <%= f.label :login %>
+    <%= f.text_field :login,class:"form-control",:required => true %>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6">
+    <%= f.label :password %>
+    <%= f.text_field :password,class:"form-control",:required => true %>
+    </div>
+    <div class="col-md-6">
+    <%= f.label :password_confirmation %>
+    <%= f.text_field :password,class:"form-control",:required => true %>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-4">
+    <%= f.label :employee_id %>
+    <%= f.text_field :employee_id,class:"form-control" %>
+    </div>
+    <div class="col-md-4">
+    <%= f.label :date_of_birth,'Date of birth' %>
+    <div class="form control">
+    <%= f.date_select :date_of_birth, order: [:day, :month, :year],start_year:1980 ,include_blank:true%>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <%= f.label :gender %>
+    <div class="form control">
+  <%= f.select(:gender, options_for_select([['Male'], ['Female']])) %>
+  </div>
+  </div>
+   </div>
+   <div class="row">
+   <div class="col-md-4">
+   <%= f.label :time_zone %>
+   <div class="form control">
+   <%= f.time_zone_select(:time_zone, ActiveSupport::TimeZone.us_zones,default: "Pacific Time (US & Canada)") %>
+   </div>
+   </div>
+   <div class="col-md-4">
+  <%= f.label :designation_id %>
+  <div class="form control">
+  <%= f.select(:designation_id, options_for_select(@designation_array))%>
+  </div>
+  </div>
+  <div class="col-md-4">
+    <%= f.label :date_of_joining,'Date of joining' %>
+    <div class="form control">
+    <%= f.date_select(:date_of_joining, order: [:day, :month, :year],start_year: 2000) %>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-4">
+    <%= f.label :work_phone %>
+    <%= f.text_field :work_phone,class:"form-control" %>
+    </div>
+    <div class="col-md-4">
+    <%= f.label :education %>
+    <%= f.text_area :education,class:"form-control" %>
+    </div>
+    <div class="col-md-4">
+    <%= f.label :comments %>
+    <%= f.text_area :comments,class:"form-control" %>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-2">
+    <%= f.label :is_active,"Is Active" %>
+    <%= f.radio_button(:is_active,true) %>
+    </div>
+    <div class="col-md-2">
+    <%= f.label :is_active,"Is locked" %>
+    <%= f.radio_button(:is_active,false) %>
+    </div>
+    <div class="col-md-4">
+    <%= f.label :date_of_deactivation,'Date of deactivation' %>
+    <%# text_field_tag :date_of_deactivation , "data-provide"=>'datepicker',class:"form-control" %>
+    <div class="form control">
+    <%= f.date_select :date_of_deactivation, order: [:day, :month, :year],start_year:1980 ,include_blank:true%>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <%= f.label :reason_for_deactivation,'Reason for deactivation' %>
+    <div class="form control">
+    <%= f.select(:reason_for_deactivation, options_for_select([['No longer an employee with us'],['Absconding'],['Long Medical Live']]),class:"form-control") %>
+    </div>
+    </div>
+    </div>
+    </br>
+    <div align="center">
+    <%= f.submit class:"btn-primary"%>
+    </div>
+    <!--<div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>-->
+<% end %>
