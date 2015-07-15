@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+gem "cancan"
+gem 'devise'
 gem 'momentjs-rails', '>= 2.8.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 gem 'bootstrap-sass', '~> 3.2.0'

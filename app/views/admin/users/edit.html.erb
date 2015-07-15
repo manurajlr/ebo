@@ -1,4 +1,4 @@
-    <h1 align="center">User Registration</h1>
+<h1 align="center">User Registration</h1>
 <% if @user.errors.any? %>
   <div id="error_explanation" style="color:red">
     <h2><%= pluralize(@user.errors.count, "error") %></h2>
@@ -34,16 +34,6 @@
     <div class="col-md-6">
     <%= f.label :login %>
     <%= f.text_field :login,class:"form-control",:required => true %>
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-6">
-    <%= f.label :password %>
-    <%= f.text_field :password,class:"form-control",:required => true %>
-    </div>
-    <div class="col-md-6">
-    <%= f.label :password_confirmation %>
-    <%= f.text_field :password,class:"form-control",:required => true %>
     </div>
     </div>
     <div class="row">
@@ -99,11 +89,11 @@
     </div>
     </div>
     <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-1">
     <%= f.label :is_active,"Is Active" %>
     <%= f.radio_button(:is_active,true) %>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1">
     <%= f.label :is_active,"Is locked" %>
     <%= f.radio_button(:is_active,false) %>
     </div>
@@ -119,6 +109,12 @@
     <div class="form control">
     <%= f.select(:reason_for_deactivation, options_for_select([['No longer an employee with us'],['Absconding'],['Long Medical Live']]),class:"form-control") %>
     </div>
+    </div>
+    <div class="col-md-2">
+    <%= f.label :role_id %>
+    <div class="form control">
+  <%= f.select(:role_id, options_for_select(@role_array)) %>
+  </div>
     </div>
     </div>
     </br>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'users#new'
-  get 'admin' => 'admin/users#new'
+  devise_for :users
+  root 'admin/users#index'
   namespace :admin do
    resources :users
   end

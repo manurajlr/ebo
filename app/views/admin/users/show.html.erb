@@ -1,96 +1,78 @@
-<p>
-  <strong>first_name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>middle_name:</strong>
-  <%= @user.middle_name %>
-</p>
-
-<p>
-  <strong>last_name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>login:</strong>
-  <%= @user.login %>
-</p>
-
-<p>
-  <strong>password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>employee_id:</strong>
-  <%= @user.employee_id %>
-</p>
-
-<p>
-  <strong>date_of_birth:</strong>
-  <%= @user.date_of_birth %>
-</p>
-
-<p>
-  <strong>gender:</strong>
-  <%= @user.gender %>
-</p>
-
-<p>
-  <strong>time_zone:</strong>
-  <%= @user.time_zone %>
-</p>
-
-<p>
-  <strong>designation_id:</strong>
-  <%= @user.designation.designation_name %>
-</p>
-
-<p>
-  <strong>date_of_joining:</strong>
-  <%= @user.date_of_joining %>
-</p>
-
-<p>
-  <strong>is_locked:</strong>
-  <%= @user.is_locked %>
-</p>
-
-<p>
-  <strong>is_active:</strong>
-  <%= @user.is_active %>
-</p>
-
-<p>
-  <strong>education:</strong>
-  <%= @user.education %>
-</p>
-
-<p>
-  <strong>comments:</strong>
-  <%= @user.comments %>
-</p>
-
-<p>
-  <strong>date_of_deactivation:</strong>
-  <%= @user.date_of_deactivation %>
-</p>
-
-<p>
-  <strong>reason_for_deactivation:</strong>
-  <%= @user.reason_for_deactivation %>
-</p>
-
-<p>
-  <strong>work_phone:</strong>
-  <%= @user.work_phone %>
-</p>
+<nav class="navbar navbar-default">
+<div class="container">
+ <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">EBO</a>
+    </div>
+<div>
+<ul class="nav navbar-nav">
+  <li role="presentation" class="active"><%= link_to "Back to index page", admin_users_path %>
+  </li>
+  <li role="presentation" class="active"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+  </ul>
+  </div>
+</div>
+</nav>
+<h3>Welcome <%= @user.first_name %></h3>
+<table class="table table-striped">
+<tr>
+  <td><strong>First name:</strong></td>
+  <td><%= @user.first_name %></td>
+</tr>
+<tr>
+  <td><strong>Middle name:</strong></td>
+  <td><%= @user.middle_name %></td>
+</tr>
+<tr>
+  <td><strong>Last name:</strong></td>
+  <td><%= @user.last_name %></td>
+</tr>
+<tr>
+  <td><strong>Email:</strong></td>
+  <td><%= @user.email %></td>
+</tr>
+<tr>
+  <td><strong>Login:</strong></td>
+  <td><%= @user.login %></td>
+</tr>
+<tr>
+  <td><strong>Employee id </strong></td>
+  <td><%= @user.employee_id %></td>
+</tr>
+<tr>
+<td><strong>Date of birth </strong></td>
+  <td><%= @user.date_of_birth %></td>
+</tr>
+<tr>
+<td><strong>Gender </strong></td>
+  <td><%= @user.gender %></td>
+</tr>
+<tr>
+<td><strong>Time_zone </strong></td>
+  <td><%= @user.time_zone %></td>
+</tr>
+<tr>
+<td><strong>Gender </strong></td>
+  <td><%= @user.gender %></td>
+</tr>
+<tr>
+<td><strong>Date of joining </strong></td>
+  <td><%= @user.date_of_joining %></td>
+</tr>
+<tr>
+<td><strong>Designation id </strong></td>
+  <td><%= @user.designation_id %></td>
+</tr>
+<td><strong>Education </strong></td>
+  <td><%= @user.education %></td>
+<tr>
+<td><strong>Work phone </strong></td>
+  <td><%= @user.work_phone %></td>
+</tr>
+<tr>
+<td><strong>Role </strong></td>
+  <td><%= @user.role.name%></td>
+</tr>
+</table>
 
 

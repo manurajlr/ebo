@@ -1,16 +1,9 @@
-    <h1 align="center">User Registration</h1>
-<% if @user.errors.any? %>
-  <div id="error_explanation" style="color:red">
-    <h2><%= pluralize(@user.errors.count, "error") %></h2>
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-<%= form_for [:admin,@user] do |f| %>
-  <div class="row">
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+   <div class="row">
   <div class="col-md-4">
   <div class="form-group">
     <%= f.label :first_name %>
@@ -74,8 +67,7 @@
    <div class="col-md-4">
   <%= f.label :designation_id %>
   <div class="form control">
-  <%= f.select(:designation_id, options_for_select(@designation_array))%>
-  <%= @designation_array %>
+  <%= f.select(:designation_id, options_for_select(Designation.all.map{|d|[d.designation_name,d.id]}))%>
   </div>
   </div>
   <div class="col-md-4">
@@ -124,7 +116,7 @@
     <div class="col-md-2">
     <%= f.label :role_id %>
     <div class="form control">
-  <%= f.select(:role_id, options_for_select(@role_array)) %>
+  <%= f.select(:role_id, options_for_select(Role.all.map{|d|[d.name,d.id]})) %>
   </div>
     </div>
     </div>
@@ -132,10 +124,6 @@
     <div align="center">
     <%= f.submit class:"btn-primary"%>
     </div>
-    <!--<div class='input-group date' id='datetimepicker1'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                </div>-->
 <% end %>
+
+<%= render "devise/shared/links" %>

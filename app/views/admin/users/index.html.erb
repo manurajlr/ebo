@@ -1,7 +1,19 @@
-<h1>Users</h1>
-<ul class="nav nav-pills">
+<nav class="navbar navbar-default">
+<div class="container">
+ <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">EBO</a>
+    </div>
+<div>
+<ul class="nav navbar-nav">
   <li role="presentation" class="active"><%= link_to 'Register new users', new_admin_user_path %></li>
-</ul>
+  </ul>
+  </div>
+</div>
+</nav>
+
+<h1>Users</h1>
+
 </br>
 <div align="center">
 <table class="table table-striped">
@@ -9,16 +21,22 @@
     <th>Users</th>
     <th colspan="4"></th>
   </tr>
- 
+ <%if @user!=nil %>
   <% @user.each do |user| %>
     <tr>
-      <td><%= user.first_name + user.middle_name + user.last_name%></td>
+      <td><%= user.first_name%></td>
       <td><%= link_to 'Show', admin_user_path(user) %></td>
+      <% if can? :update , @user%>
       <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
+      <% end %>
+      <% if can? :destroy , @user%>
       <td><%= link_to 'Destroy', admin_user_path(user),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
     </tr>
+  <% end %>
   <% end %>
 </table>
 </div>
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
